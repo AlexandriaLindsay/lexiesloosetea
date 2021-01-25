@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-detailblogpage{% endblock %}
+  
+{% block content %}
+    <div class="sub-page-header">
+        <h1>{{ self.title }}</h1>
+    </div>
+
+    <div class="width-1200">
+        {% image self.blog_image fill-1000x500 as banner %}
+
+        <div class="width-1000 center">
+            <img src="{{ banner.url }}" alt="{{ banner.alt }}" />
+        </div>
+
+        <div class="width-1000">
+           {{ self.description|richtext }}
+           <ul class="blog-cats">
+            <p>Categories</p>
+            {% for cat in self.categories.all %}
+                <li>
+                    <a href="{{ self.get_parent.url }}?category={{cat.slug }}">{{ cat.name }}</a>
+                </li>
+            {% endfor %}
+           </ul>
+        </div>
+    </div>
+
+{% endblock %}

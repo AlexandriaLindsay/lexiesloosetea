@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-detailproductpage{% endblock %}
+  
+{% block content %}
+    <div class="sub-page-header">
+        <h1>{{ self.title }}</h1>
+    </div>
+
+    <div class="width-1500 single-product">
+        {% image self.product_image fill-500x500 as banner %}
+
+        <div class="doubleCol center">
+            <img src="{{ banner.url }}" alt="{{ banner.alt }}" />
+        </div>
+
+        <div class="doubleCol">
+           {{ self.description|richtext }}
+           <ul class="blog-cats">
+            <p>Categories</p>
+            {% for cat in self.categories.all %}
+                <li>
+                    <a href="{{ self.get_parent.url }}category/{{cat.slug }}">{{ cat.name }}</a>
+                </li>
+            {% endfor %}
+           </ul>
+
+           <ul class="blog-cats mood-cat center">
+            <p>Helps with These Moods</p>
+            {% for mood in self.moods.all %}
+                <li>
+                    {% if mood.slug == 'adventurous' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #F6AF79;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'calm' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #B7FFBC;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'creative' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #FEFE93;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'high-energy' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #FF6E6E;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'sensual' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #FAADFF;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'relaxed' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #ADB7FF;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'contentment' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #8CDAD2;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% elif mood.slug == 'stressed' %}
+                    <a href="{{ self.get_parent.url }}mood/{{mood.slug }}">
+                    <span style="background-color: #797979;"></span>
+                    <span>{{ mood.name }}</span>
+                    </a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+           </ul>
+        </div>
+    </div>
+
+{% endblock %}

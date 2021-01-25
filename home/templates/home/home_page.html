@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags wagtailroutablepage_tags%}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <div class="home-carousel">
+        <img src="{% static 'images/leaf.png' %}" alt="Leaf">
+        <img src="{% static 'images/tea-pot-pouring-a-cup-of-tea.jpg' %}" alt="Tea Pot Pouring a Cup of Tea">
+        <div class="rellax">
+            <h1>The Mood Changing Tea</h1>
+            <p>Tea that boosts your mood. All while providing great tasting teas without the use of sugar or articial flavours ever!</p>
+            <a class="custom-btn" href="{% slugurl 'tea-products' %}">
+                <span>Shop Today!</span>
+                <div class="liquid"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="moods center">
+        <img src="{% static 'images/green-leaves.jpg' %}" alt="Green Leaves">
+        <div class="width-800">
+            {{ page.intro|richtext }}
+            <div class="mood-board">
+                <a href="{% slugurl 'tea-products' %}mood/calm/">
+                    <span></span>
+                    <span>Calm</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/adventurous/">
+                    <span></span>
+                    <span>Adventurous</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/creative/">
+                    <span></span>
+                    <span>Creative</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/high-energy/">
+                    <span></span>
+                    <span>High Energy</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/sensual/">
+                    <span></span>
+                    <span>Sensual</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/relaxed/">
+                    <span></span>
+                    <span>Relaxed</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/contentment/">
+                    <span></span>
+                    <span>Contentment</span>
+                </a>
+
+                <a href="{% slugurl 'tea-products' %}mood/stressed/">
+                    <span></span>
+                    <span>Stressed</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="show-case">
+        <div class="width-1700">
+            <div class="width-800 product-intro center">
+                {{ page.product_intro|richtext }}
+            </div>
+            <div class="slick-carousel center">
+                <div>
+                    <div class="slide-content">
+                        <a href="{% slugurl 'tea-products' %}category/herbal-tea">
+                            <img src="{% static 'images/fruit-platter-with-fruit-tea.jpg' %}" alt="Fruit Platter with Tea">
+                            <div class="box">
+                                <h3>HERBAL TEAS</h3>
+                                <p>Relax with some herbla teas that smell and taste amazing. Infused with various fruits, herbs, and roots.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="slide-content">
+                        <a href="{% slugurl 'tea-products' %}category/green-tea">
+                            <img src="{% static 'images/fruit-platter-with-fruit-tea.jpg' %}" alt="Fruit Platter with Tea">
+                            <div class="box">
+                                <h3>GREEN TEAS</h3>
+                                <p>Enjoy some green tea and relax your body and mind, all while soaking in the health benefits.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="slide-content">
+                        <a href="{% slugurl 'tea-products' %}category/black-tea">
+                            <img src="{% static 'images/black-tea-and-a-book.jpg' %}" alt="Black Tea and a Book on a Table">
+                            <div class="box">
+                                <h3>BLACK TEAS</h3>
+                                <p>Classic teas. Contains many antioxidants and polyphenols that are associated with a number of health benefits.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="slide-content">
+                        <a href="{% slugurl 'tea-products' %}category/white-tea">
+                            <img src="{% static 'images/white-tea-and-ornaments.jpg' %}" alt="White Tea and Ornaments">
+                            <div class="box">
+                                <h3>WHITE TEAS</h3>
+                                <p>Made from new growth buds and young leaves. White tea is often known for it's relaxing properties.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-the-tea">
+        <div class="width-1700">
+            <div class="doubleCol">
+                <img src="{% static 'images/green-tea-cups-and-pot.png' %}" alt="Green Cups and a Tea Pot on a Counter">
+                <img class="rellax" data-rellax-speed="7" src="{% static 'images/berry-tea.png' %}" alt="Berry Fusion Tea">
+                <img class="rellax" src="{% static 'images/green-tea.png' %}" alt="Green Loose Leaf Tea">
+            </div>
+            <div class="doubleCol">
+                <h2 class="center">Testimonials</h2>
+                <div class="test-carousel center">
+                    <div>
+                        <div class="slide-content">
+                            <p>I'm been searching for a tea that's good quality, but without the added sugar and artifical flavors. This is my go to place for quite a while now. Thanks Lex!</p>
+                            <span>- Calvin</span>
+                        </div>
+                    </div>
+                    {% comment %} <div>
+                        <div class="slide-content">
+                            <p>This is placeholder text for now but eventually it will something really amazing content! I don't know how to write very good, but that's okay! This is text for now but eventually it will something really amazing content! I don't know how to write very good, but that's okay!</p>
+                            <span>- John Doe2</span>
+                        </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="products width-1200 center">
+        <div class="width-800">
+            {{ page.popular_teas|richtext }}
+        </div>
+
+        <div class="product-carousel center">
+           
+            {% for post in posts %}
+                <div>
+                    <div class="slide-content">
+                        <a class="center" href="{{ post.url }}">
+                            {% image post.product_image fill-342x342 as product_img %}
+                            <img src="{{ product_img.url }}" alt="{{ product_img.alt }}" />
+                            <h3>{{ post.title }}</h3>
+                            <p>${{ post.price|striptags }}</p>
+                            <span>View Details</span>
+                            <span><button class="snipcart-add-item"
+                                data-item-id="{{ post.slug }}"
+                                data-item-price="{{ post.price|striptags }}"
+                                data-item-url="/"
+                                data-item-image="{{ product_img.url }}"
+                                data-item-name="{{ post.title }}">
+                                Add to Cart
+                            </button></span>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+           
+        </div>
+        <a class="custom-btn" href="{% slugurl 'tea-products' %}">
+            <span>View Our Teas</span>
+            <div class="liquid"></div>
+        </a>
+    </div>
+
+    <div class="health">
+        <div class="width-1700">
+            <div class="doubleCol">
+                {{ page.health_benefits|richtext }}
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-content">
+        <div class="subscribe-modal width-1200">
+            <span class="close">&#x2715;</span>
+            <div class="doubleCol">
+                <form action="{% pageurl page %}" method="POST">
+                    <h2>Thanks for your Support!</h2>
+                    <p>Subscribe to get all the latest deals and news!</p>
+                    {% csrf_token %}
+                    <ul>
+                        {{ form.as_ul }}
+                    </ul>
+
+                    <button type="submit" class="custom-btn">
+                        Send
+                    </button>
+                </form>
+            </div>
+
+            <div class="doubleCol">
+                <img src="{% static 'images/the-adventure-continues.jpg' %}" alt="Person Holding a Cup of Tea">
+            </div>
+        </div>
+    </div>
+                
+{% endblock %}

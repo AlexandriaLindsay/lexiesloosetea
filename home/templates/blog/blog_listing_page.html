@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags wagtailroutablepage_tags%}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+  
+{% block content %}
+    <div class="sub-page-header">
+        <h1>{{ page.title }}</h1>
+    </div>
+
+    <div class="width-800 blog-intro center">
+        {{ page.description|richtext }}
+    </div>
+
+    <div class="width-1500">
+        <!-- <a href="{% routablepageurl page 'latest_posts' %}">View Latest Posts</a> -->
+        <ul class="blog-cats">
+            <p>Categories</p>
+            <li><a href="{{ self.url }}">All</a></li>
+            {% for cat in categories %}
+            <li>
+                <a href="{{ self.url }}category/{{cat.slug }}">{{ cat.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        {% for post in posts %}
+            <a class="tripleCol" href="{{ post.url }}">
+            {% image post.blog_image fill-933x728 as blog_img %}
+            <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}" />
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.description|striptags|truncatewords:20 }} <span>Read More</span></p>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

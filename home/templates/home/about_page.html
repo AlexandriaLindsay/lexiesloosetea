@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-aboutpage{% endblock %}
+
+{% block content %}
+    <div class="sub-page-header">
+        <h1>About Our Teas</h1>
+    </div>
+
+    <div class="about-intro width-1500">
+        <div class="doubleCol">
+            {{ page.body|richtext }}
+        </div>
+
+        <div class="doubleCol">
+            <img src="{% static 'images/loose-tea.png' %}" alt="Loose Tea">
+        </div>
+    </div>
+
+    <div id="faq" class="width-1200">
+        <h2>Frequently Asked Questions</h2>
+        <div class="question">
+            <span>Q.</span>
+            <p>How much caffeine is in tea?</p>
+        </div>
+
+        <div class="answer">
+            <span>A.</span>
+            <p>Depending on your choice of tea, Green Tea has about 30mg, while Oolong Tea contains roughly 
+            35-37mg. Black Tea usually has the highest, clocking in around 40mg and white tea has 15mg. Herbal teas such as, chamomile and ginseng have no caffeine. 
+            </p>
+        </div>
+
+        <div class="question">
+            <span>Q.</span>
+            <p>How many calories are in a cup of tea?</p>
+        </div>
+
+        <div class="answer">
+            <span>A.</span>
+            <p>If we're talking about the most common teas that come from the Camellia sinensis plant, you can expect no more than 2 calories. Other teas may very, as Hisbcus can have up to 37 calories.
+            </p>
+        </div>
+
+        <div class="question">
+            <span>Q.</span>
+            <p>What are the health benefits of Oolong Tea?</p>
+        </div>
+
+        <div class="answer">
+            <span>A.</span>
+            <p>As Oolong tea is starting to become much more popular, the health benefits to green and black teas. These include benefits they may help ward of heart disease and cancer, improve brain, bone, and dental health. It also may boost your metabolism and descrease the risk of developing diabetes. 
+            </p>
+        </div>
+
+        <div class="question">
+            <span>Q.</span>
+            <p>What teas help you sleep?</p>
+        </div>
+
+        <div class="answer">
+            <span>A.</span>
+            <p>chamomile and lavendar white teas are the most popular for relaxnig the body and preparing for a good night sleep. Many other such as Valerin root, Passionflower, and Magnolia bark can help initiate sleep. 
+            </p>
+        </div>
+ 
+ 
+
+    </div>
+{% endblock %}

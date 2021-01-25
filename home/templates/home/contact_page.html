@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-aboutpage{% endblock %}
+
+{% block content %}
+    <div class="sub-page-header">
+        <h1>Contact Us</h1>
+    </div>
+
+    <div class="contact-intro width-1200">
+        <div class="doubleCol">
+            <img src="{% static 'images/lexies-loose-tea-horizontal-logo-green.svg' %}" alt="Lexies Loose Tea Horizontal Logo">
+            <p><strong>E: <a href='ma&#105;lto&#58;&#105;nf%6&#70;&#64;%6Cexi%65&#115;lo&#37;6Fse&#116;ea%2Ec%61'>info&#64;lex&#105;esloos&#101;tea&#46;ca</a></strong></p>
+        </div>
+
+        <div class="doubleCol">
+            {% if request.method == 'POST' %}
+                {{ self.thank_you_text|richtext }}
+         
+            {% else %}
+               <form action="{% pageurl page %}" method="POST">
+                {% csrf_token %}
+                <ul>
+                    {{ form.as_ul }}
+                </ul>
+
+                <button type="submit" class="custom-btn">
+                    Send
+                </button>
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

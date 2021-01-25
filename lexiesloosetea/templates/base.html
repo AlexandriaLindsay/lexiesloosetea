@@ -1,0 +1,124 @@
+{% load static wagtailuserbar %}
+{% load wagtailcore_tags %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="{% block search_description %}{% if self.seo_search_description %}{{ self.seo_search_description }}{% else %}{{ self.search_description }}{% endif %}{% endblock %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script data-ad-client="ca-pub-6530228236342438" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        {# Global stylesheets #}
+        <link rel="preconnect" href="https://app.snipcart.com">
+        <link rel="preconnect" href="https://cdn.snipcart.com">
+        <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.26/default/snipcart.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/lexiesloosetea.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static 'images/safari-pinned-tab.svg' %}" color="#f26178">
+        <meta name="msapplication-TileColor" content="#0f1d13">
+        <meta name="theme-color" content="#0f1d13">
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% if request.get_full_path == '/' %}            
+            <header>            
+        {% else %}
+            <header class="sub-header">            
+        {% endif %}
+
+                <nav>
+                    <ul>
+                        <li><a href="{% slugurl 'home' %}">Home</a></li>
+                        <li><a href="{% slugurl 'about' %}">About</a></li>
+                        <li><a href="{% slugurl 'tea-products' %}">Shop</a></li>
+                        <li><a href="{% slugurl 'home' %}"><img src="{% static 'images/lexies-loose-tea-logo.svg' %}" alt="Lexies Loose Tea Logo"></a></li>
+                        <li><a href="{% slugurl 'tea-blog' %}">Blog</a></li>
+                        <li><a href="{% slugurl 'about' %}#faq">FAQ</a></li>
+                        <li><a href="{% slugurl 'contact-us' %}">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+            {% if request.get_full_path == '/' %}            
+            <div class="grad"></div>
+            {% endif %}
+            <hr> 
+            <div class="width-800 center">
+                <h2>Contact</h2>
+            </div>
+            <div class="width-1200">
+                <div class="tripleCol">
+                    <img src="{% static 'images/lexies-loose-tea-horizontal-logo.svg' %}" alt="Lexies Loose Tea Horizontal Logo">
+                    <p><strong>E: <a href='ma&#105;lto&#58;&#105;nf%6&#70;&#64;%6Cexi%65&#115;lo&#37;6Fse&#116;ea%2Ec%61'>info&#64;lex&#105;esloos&#101;tea&#46;ca</a></strong></p>
+                </div>
+
+                <div class="tripleCol center">
+                    <p><strong>Follow Us</strong></p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="{% static 'images/facebook.svg' %}" alt="Facebook Icon" title="See us on Facebook">
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="{% static 'images/instagram.svg' %}" alt="Instagram Icon" title="See us on Instagram">
+                    </a>
+                </div>
+
+                <div class="tripleCol">
+                    <p><strong>Sign up to get the latest tea!</strong></p>
+                    <!-- Begin Mailchimp Signup Form -->                
+                    <div id="mc_embed_signup">
+                    <form action="https://lexiesloosetea.us7.list-manage.com/subscribe/post?u=efa17406c4bd9e1faa3c2e035&amp;id=f359cc7528" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                    <div class="mc-field-group">
+                      
+                        <input type="email" placeholder="Email Address*" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_efa17406c4bd9e1faa3c2e035_f359cc7528" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                    </div>
+                            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+                    <!--End mc_embed_signup-->
+               
+                </div>
+            </div>
+        </footer>
+
+
+
+        {# Global javascript #}
+     
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/lexiesloosetea.min.js' %}"></script>
+        <script src="https://cdn.snipcart.com/themes/v3.0.26/default/snipcart.js"></script>
+        <div id="snipcart" data-config-modal-style="side" data-api-key="NTQ2OGU2NDgtMDc3MS00ZmNmLTljZWEtNjkzMTNiOTYxOTBkNjM3NDIzNTkzNTkyMzU1Mjcx" hidden></div>
+    </body>
+</html>
